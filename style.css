@@ -22,6 +22,7 @@ html {
 
   --dark-text: hsl(221, 14%, 31%);
   --light-text: hsl(0, 0%, 100%);
+  --equal-text: hsl(0, 0%, 100%);
 }
 
 body {
@@ -32,6 +33,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  user-select: none;
 }
 
 #screen {
@@ -43,7 +45,6 @@ body {
   background-color: var(--toggle-keypad-background);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  user-select: none;
 }
 
 #screen,
@@ -61,7 +62,7 @@ body {
   border-radius: 0.2rem;
 }
 
-.key:hover {
+.key:hover, #screen:hover {
   cursor: pointer;
 }
 
@@ -85,6 +86,7 @@ body {
 #equal {
   background-color: var(--key-background-2-toggle);
   box-shadow: 0 0.15rem var(--key-shadow-2);
+  color: var(--equal-text);
 }
 
 .long {
@@ -93,5 +95,5 @@ body {
 }
 
 .disable {
-  opacity: .1;
+  visibility: hidden;
 }
