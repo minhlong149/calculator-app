@@ -91,3 +91,7 @@ body {
   width: auto;
   grid-column: span 2;
 }
+
+.disable {
+  opacity: .1;
+}
