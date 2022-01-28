@@ -5,7 +5,7 @@ let isFirst = true;
 // Input number key
 
 const screen = document.querySelector("#screen");
-screen.addEventListener("click", () => navigator.clipboard.writeText(result));
+screen.addEventListener("click", () => navigator.clipboard.writeText(input));
 
 const numKeys = document.querySelectorAll(".num");
 numKeys.forEach((key) => {
