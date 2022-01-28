@@ -64,7 +64,9 @@ operators.forEach((operator) => {
 
 const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
-  calculate();
-  input = result;
-  currOperator = undefined;
+  if (!isFirst) {
+    calculate();
+    input = result;
+    currOperator = undefined;
+  }
 });
