@@ -68,7 +68,7 @@ body {
   cursor: pointer;
 }
 
-.key:active {
+.key:active, #equal:active {
   box-shadow: none;
   transform: translateY(0.15rem);
 }
