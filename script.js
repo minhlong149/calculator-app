@@ -1,11 +1,21 @@
+// Init value
+
 let result = (input = 0);
 let currOperator;
-let isFirst = true;
+let isFirst = true; // Start of a new equator
 
-// Input number key
+function resetInput() {
+  screen.textContent = result = input = 0;
+  currOperator = undefined;
+  isFirst = true;
+}
+
+// Click the screen to copy value
 
 const screen = document.querySelector("#screen");
 screen.addEventListener("click", () => navigator.clipboard.writeText(input));
+
+// Input from keyboard
 
 const numKeys = document.querySelectorAll(".num");
 numKeys.forEach((key) => {
@@ -28,14 +38,10 @@ backspace.addEventListener(
   () => (screen.textContent = input = Math.floor(input / 10))
 );
 
-function resetInput() {
-  screen.textContent = result = input = 0;
-  currOperator = undefined;
-  isFirst = true;
-}
-
 const clean = document.querySelector("#clean");
 clean.addEventListener("click", resetInput);
+
+// Calculate
 
 function calculate() {
   if (currOperator != undefined) {
@@ -45,6 +51,8 @@ function calculate() {
     else if (currOperator == "div") result = +result / +input;
   } else result = input;
   isFirst = true;
+
+  // Handle big number
   if (String(result).length > 13) {
     screen.textContent = "ERROR";
     setTimeout(resetInput, 1000);
