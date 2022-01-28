@@ -29,7 +29,7 @@ backspace.addEventListener(
 );
 
 function resetInput() {
-  screen.textContent = input = 0;
+  screen.textContent = result = input = 0;
   currOperator = undefined;
   isFirst = true;
 }
@@ -54,8 +54,10 @@ function calculate() {
 const operators = document.querySelectorAll(".operator");
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    calculate();
-    input = 0;
+    if (!isFirst) {
+      calculate();
+      input = 0;
+    }
     currOperator = operator.getAttribute("id");
   });
 });
