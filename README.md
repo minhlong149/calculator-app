@@ -4,26 +4,30 @@ This is my solution to the [Calculator Project on The Odin Project](https://www.
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The goals](#the-goals)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+- [Calculator App](#calculator-app)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The goals](#the-goals)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+  - [Author](#author)
 
 ## Overview
 
 ### The goals
 
 - Perform mathmatical operations like addition, subtraction, multiplication, and division
+- Adjust the color theme based on user preference
+- Users can get floating point numbers
 
 ### Screenshot
 
-![](./images/screenshot.png)
+![screenshot](./images/screenshot.png)
 
 ### Links
 
@@ -35,10 +39,8 @@ This is my solution to the [Calculator Project on The Odin Project](https://www.
 ### Built with
 
 - Semantic HTML5 markup
-- CSS Flexbox & Grid
-- CSS custom properties
+- CSS Flexbox, Grid & Custom properties
 - Vanila JavaScripts
-- Mobile-first workflow
 
 ### What I learned
 
@@ -46,7 +48,7 @@ This is my solution to the [Calculator Project on The Odin Project](https://www.
 
 ```css
 .key {
-  box-shadow: 0 0.15rem var(--shadow);
+  box-shadow: 0 0.15rem #000;
 }
 
 .key:active {
@@ -57,8 +59,6 @@ This is my solution to the [Calculator Project on The Odin Project](https://www.
 
 ### Continued development
 
-- Adjust the color theme based on user preference
-- Users can get floating point numbers
 - Add keyboard support
 
 ### Useful resources
