@@ -78,3 +78,27 @@ equal.addEventListener("click", () => {
     currOperator = undefined;
   }
 });
+
+// Toggle theme
+
+const toggleButtons = document.querySelectorAll(".choice-ball");
+toggleButtons.forEach((currentButton) => {
+  currentButton.addEventListener("click", () => {
+    // Toggle all other button active off
+    toggleButtons.forEach((button) => {
+      button.classList.remove("active");
+    });
+    // Toggle curr btn
+    currentButton.classList.add("active");
+    // Set theme base off btn id
+    // console.log(currentButton.id);
+    document.body.className = currentButton.id;
+  });
+});
+
+// const toggleButtons = document.querySelectorAll(".choice-ball");
+// toggleButtons.forEach((currentButton) => {
+//   key.addEventListener("click", () => {
+// currentButton;});
+//           console.log(currentButton);
+// });
