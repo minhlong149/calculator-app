@@ -219,10 +219,6 @@ body {
   grid-column: span 2;
 }
 
-.disable {
-  visibility: hidden;
-}
-
 #header {
   display: flex;
   /* flex-direction: row; */

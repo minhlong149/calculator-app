@@ -4,10 +4,15 @@ let result = (input = 0);
 let currOperator;
 let isFirst = true; // Start of a new equator
 
+let floatingPoint = 0;
+let useFloatPoint = false;
+
 function resetInput() {
   screen.textContent = result = input = 0;
   currOperator = undefined;
   isFirst = true;
+  floatingPoint = 0;
+  useFloatPoint = false;
 }
 
 // Click the screen to copy value
@@ -22,10 +27,17 @@ numKeys.forEach((key) => {
   key.addEventListener("click", () => {
     const num = key.getAttribute("id");
     if (isFirst) {
-      screen.textContent = input = +num;
+      floatingPoint = useFloatPoint ? floatingPoint + 1 : floatingPoint;
+      screen.textContent = input = +num / Math.pow(10, floatingPoint);
       isFirst = false;
     } else if (String(input).length < 13) {
-      screen.textContent = input = +input * 10 + +num;
+      floatingPoint = useFloatPoint ? floatingPoint + 1 : floatingPoint;
+      if (useFloatPoint) {
+        screen.textContent = input =
+          +input + +num / Math.pow(10, floatingPoint);
+      } else {
+        screen.textContent = input = +input * 10 + +num;
+      }
     }
   });
 });
@@ -33,10 +45,17 @@ numKeys.forEach((key) => {
 // Delete number key
 
 const backspace = document.querySelector("#backspace");
-backspace.addEventListener(
-  "click",
-  () => (screen.textContent = input = Math.floor(input / 10))
-);
+backspace.addEventListener("click", () => {
+  if (useFloatPoint) {
+    screen.textContent = input =
+      Math.floor((+input * Math.pow(10, floatingPoint)) / 10) /
+      Math.pow(10, floatingPoint - 1);
+    floatingPoint--;
+    useFloatPoint = floatingPoint != 0;
+  } else {
+    screen.textContent = input = Math.floor(input / 10);
+  }
+});
 
 const clean = document.querySelector("#clean");
 clean.addEventListener("click", resetInput);
@@ -51,22 +70,29 @@ function calculate() {
     else if (currOperator == "div") result = +result / +input;
   } else result = input;
   isFirst = true;
-
+  result = Number(result.toPrecision(13));
   // Handle big number
   if (String(result).length > 13) {
     screen.textContent = "ERROR";
     setTimeout(resetInput, 1000);
+    console.log();
   } else screen.textContent = result;
 }
 
 const operators = document.querySelectorAll(".operator");
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    if (!isFirst) {
-      calculate();
-      input = 0;
+    if (operator.id == "decimal") {
+      useFloatPoint = true;
+    } else {
+      if (!isFirst) {
+        calculate();
+        input = 0;
+      }
+      currOperator = operator.getAttribute("id");
+      floatingPoint = 0;
+      useFloatPoint = false;
     }
-    currOperator = operator.getAttribute("id");
   });
 });
 
